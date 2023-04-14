@@ -43,14 +43,14 @@ namespace SpaceInvaderso
             bool coll = false;
             int xx = (o as Bullet).X;
             int yy = (o as Bullet).Y;
-            Invader i = Enemies.list.Find(c => Math.Abs(xx - c.X) < 2 && c.Y == yy);
+            Invader i = Enemies.invaders.Find(c => Math.Abs(xx - c.X) < 2 && c.Y == yy);
 
             if (i != null)
             {
                 coll = true;
                 i.CClear();
                 // Invader.count++;
-                Enemies.list.Remove(i);
+                Enemies.invaders.Remove(i);
                 i.Dispose();
             }
 

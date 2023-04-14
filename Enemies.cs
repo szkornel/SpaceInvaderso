@@ -10,7 +10,7 @@ namespace SpaceInvaderso
     /// </summary>
     internal static class Enemies
     {
-        private static Caracter[] invaderSkin;
+        private static readonly Caracter[] invaderSkin;
         public static List<Invader> invaders;
         private static int stepCount;
         private static Timer timer;

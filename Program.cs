@@ -16,7 +16,7 @@ namespace SpaceInvaderso
 
             Console.ReadKey();
 
-            while (Enemies.list.Count < 40)
+            while (Enemies.invaders.Count < 40)
             {
                 var c = Console.ReadKey(true).Key;
                 t.GetInput(c);
