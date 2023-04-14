@@ -10,9 +10,8 @@ namespace SpaceInvaderso
             Console.SetBufferSize(80, 80);
             Console.SetWindowSize(80, 32);
             Console.CursorVisible = false;
-
-            Enemies e = new Enemies();
-            Tank t = new Tank(e);
+            Tank t = new Tank();
+            Enemies.StartTimer();
             t.Draw();
 
             Console.ReadKey();
@@ -25,7 +24,7 @@ namespace SpaceInvaderso
                 Console.Write("*****{0}*****", Invader.count);
             }
 
-            e._timer.Dispose();
+            Enemies.StopTimer();
             Console.Clear();
             Console.Clear();
             Console.WriteLine("Game Over");

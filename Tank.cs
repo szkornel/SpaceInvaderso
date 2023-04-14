@@ -4,7 +4,7 @@ namespace SpaceInvaderso
 {
     internal class Tank : Invader
     {
-        public Tank(Enemies e) : base(new Caracter[6] {
+        public Tank() : base(new Caracter[6] {
                                              new Caracter(0,1,'|',ConsoleColor.White),
                                              new Caracter(1,0,'_',ConsoleColor.White),
                                              new Caracter(2,0,'|',ConsoleColor.Yellow),

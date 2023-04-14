@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading;
 
 namespace SpaceInvaderso
@@ -7,74 +8,64 @@ namespace SpaceInvaderso
     /// <summary>
     /// Konténerosztály az ellenségek listáját tartalmazza
     /// </summary>
-    internal class Enemies
+    internal static class Enemies
     {
-        public static int step_count = 0;
-        public static List<Invader> list;
-        public Timer _timer;
+        private static Caracter[] invaderSkin;
+        public static List<Invader> invaders;
+        private static int stepCount;
+        private static Timer timer;
 
-        public Enemies()
+        static Enemies()
         {
-            list = new List<Invader>();
+            stepCount = 1;
+            invaders = new List<Invader>();
 
-            Caracter[] c = new Caracter[6] {
-                                  new Caracter(0,0,'(',ConsoleColor.Red),
-                                  new Caracter(1,0,'o',ConsoleColor.Red),
-                                  new Caracter(3,0,'o',ConsoleColor.Red),
-                                  new Caracter(4,0,')',ConsoleColor.Red),
-                                  new Caracter(1,1,'/',ConsoleColor.Red),
-                                  new Caracter(3,1,'\\',ConsoleColor.Red)
-                           };
-
-            for (int i = 0; i < 10; i++)
+            invaderSkin = new Caracter[6]
             {
-                Invader ii = new Invader(c, i * 8, 2);
-                list.Add(ii);
-            }
+                new Caracter(0,0,'(',ConsoleColor.Red),
+                new Caracter(1,0,'o',ConsoleColor.Red),
+                new Caracter(3,0,'o',ConsoleColor.Red),
+                new Caracter(4,0,')',ConsoleColor.Red),
+                new Caracter(1,1,'/',ConsoleColor.Red),
+                new Caracter(3,1,'\\',ConsoleColor.Red)
+            };
 
-            _timer = new Timer(Move, this, 1000, 2000);
-        }
-        public void Draw()
-        {
-            Console.SetCursorPosition(0, 0);
-            Console.Clear();
-
-            foreach (var item in list)
-            {
-                item.Draw();
-            }
+            SpawnInvaders();
         }
 
-        public static void Move(object o)
+        public static void StartTimer()
         {
-            if (step_count > 4)
+            timer = new Timer(Move, null, 1000, 2000);
+        }
+
+        public static void StopTimer()
+        {
+            timer.Dispose();
+        }
+
+        private static void SpawnInvaders(int n = 10)
+        {
+            for (int i = 0; i < n; i++)
+            {
+                invaders.Add(new Invader(invaderSkin, i * 8, 2));
+            }
+        }
+
+        private static void Move(object o)
+        {
+            if (stepCount > 4)
             {
                 Console.SetCursorPosition(0, 0);
                 Console.Clear();
-
-                Caracter[] c = new Caracter[6] {
-                                      new Caracter(0,0,'(',ConsoleColor.Red),
-                                      new Caracter(1,0,'o',ConsoleColor.Red),
-                                      new Caracter(3,0,'o',ConsoleColor.Red),
-                                      new Caracter(4,0,')',ConsoleColor.Red),
-                                      new Caracter(1,1,'/',ConsoleColor.Red),
-                                      new Caracter(3,1,'\\',ConsoleColor.Red)
-                               };
-
-                for (int i = 0; i < 10; i++)
-                {
-                    Invader ii = new Invader(c, i * 8, 2);
-                    list.Add(ii);
-                }
-
-                step_count = step_count - 4;
+                SpawnInvaders();
+                stepCount -= 4;
             }
 
-            step_count++;
+            stepCount++;
 
-            for (int i = 0; i < list.Count; i++)
+            foreach (Invader i in invaders)
             {
-                list[i].Move();
+                i.Move();
             }
         }
     }
