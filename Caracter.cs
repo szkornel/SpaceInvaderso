@@ -4,14 +4,7 @@ namespace SpaceInvaderso
 {
     public class Caracter
     {
-        private int x;
-
-        public int X
-        {
-            get { return x; }
-            set { x = value; }
-        }
-
+        public int X { get; set; }
         public int Y { get; set; }
         public ConsoleColor Color { get; set; }
         public char MyCaracter { get; set; }
