@@ -10,16 +10,15 @@ namespace SpaceInvaderso
             Console.SetBufferSize(80, 80);
             Console.SetWindowSize(80, 32);
             Console.CursorVisible = false;
-            Tank t = new Tank();
             Enemies.StartTimer();
-            t.Draw();
+            Tank.MyTank.Draw();
 
             Console.ReadKey();
 
             while (Enemies.invaders.Count < 40)
             {
                 var c = Console.ReadKey(true).Key;
-                t.GetInput(c);
+                Tank.MyTank.GetInput(c);
                 Console.SetCursorPosition(50, 30);
                 Console.Write("*****{0}*****", Invader.count);
             }

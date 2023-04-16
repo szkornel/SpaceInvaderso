@@ -57,6 +57,7 @@ namespace SpaceInvaderso
             {
                 Console.SetCursorPosition(0, 0);
                 Console.Clear();
+                Tank.MyTank.Draw();
                 SpawnInvaders();
                 stepCount -= 4;
             }

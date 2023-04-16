@@ -4,14 +4,26 @@ namespace SpaceInvaderso
 {
     internal class Tank : Invader
     {
-        public Tank() : base(new Caracter[6] {
-                                             new Caracter(0,1,'|',ConsoleColor.White),
-                                             new Caracter(1,0,'_',ConsoleColor.White),
-                                             new Caracter(2,0,'|',ConsoleColor.Yellow),
-                                             new Caracter(3,0,'|',ConsoleColor.Yellow),
-                                             new Caracter(4,0,'_',ConsoleColor.White),
-                                             new Caracter(5,1,'|',ConsoleColor.White)
-                                      }, 20, 26)
+        public static Tank MyTank { get; }
+
+        private static Caracter[] TankSkin { get; }
+
+        static Tank()
+        {
+            TankSkin = new Caracter[6]
+            {
+                new Caracter(0,1,'|',ConsoleColor.White),
+                new Caracter(1,0,'_',ConsoleColor.White),
+                new Caracter(2,0,'|',ConsoleColor.Yellow),
+                new Caracter(3,0,'|',ConsoleColor.Yellow),
+                new Caracter(4,0,'_',ConsoleColor.White),
+                new Caracter(5,1,'|',ConsoleColor.White)
+            };
+
+            MyTank = new Tank();
+        }
+
+        public Tank() : base(TankSkin, 20, 26)
         {
             //
         }
