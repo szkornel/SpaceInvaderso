@@ -19,8 +19,8 @@ namespace SpaceInvaderso
             {
                 var c = Console.ReadKey(true).Key;
                 Tank.MyTank.GetInput(c);
-                Console.SetCursorPosition(50, 30);
-                Console.Write("*****{0}*****", Invader.count);
+                // Console.SetCursorPosition(50, 30);
+                // Console.Write("*****{0}*****", Invader.count);
             }
 
             Enemies.StopTimer();

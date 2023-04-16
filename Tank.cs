@@ -5,12 +5,11 @@ namespace SpaceInvaderso
     internal class Tank : Invader
     {
         public static Tank MyTank { get; }
-
-        private static Caracter[] TankSkin { get; }
+        private static readonly Caracter[] tankSkin;
 
         static Tank()
         {
-            TankSkin = new Caracter[6]
+            tankSkin = new Caracter[6]
             {
                 new Caracter(0,1,'|',ConsoleColor.White),
                 new Caracter(1,0,'_',ConsoleColor.White),
@@ -23,7 +22,7 @@ namespace SpaceInvaderso
             MyTank = new Tank();
         }
 
-        public Tank() : base(TankSkin, 20, 26)
+        public Tank() : base(tankSkin, 20, 26)
         {
             //
         }
